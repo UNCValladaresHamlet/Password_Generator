@@ -75,36 +75,37 @@ function getpasswordCriteria() {
 
   function generatePassword() {
     if (confirmLowercaseCharacter) {
-      for (var index = 0; index < lowercaseArray.length; index++) {
-          validatedCharacterArray.append(lowercaseArray[index]);
+      for (var i = 0; i < lowercaseArray.length; i++) {
+        validatedCharacterArray.append(lowercaseArray[i]);
       }
     }
     if (confirmUppercaseCharacters) {
-      for (var index = 0; index < uppercaseArray.length; index++) {
-          validatedCharacterArray.append(uppercaseArray[index]);
+      for (var i = 0; i < uppercaseArray.length; i++) {
+        validatedCharacterArray.append(uppercaseArray[i]);
       }
     }
     if (confirmSpecialCharacters) {
-      for (var index = 0; index < symbolArray.length; index++) {
-          validatedCharacterArray.append(symbolArray[index]);
+      for (var i = 0; i < symbolArray.length; i++) {
+        validatedCharacterArray.append(symbolArray[i]);
       }
     }
     if (confirmNumericalCharacters) {
-      for (var index = 0; index < numberArray.length; index++) {
-          validatedCharacterArray.append(numberArray[index]);
+      for (var i = 0; i < numberArray.length; i++) {
+        validatedCharacterArray.append(numberArray[i]);
       }
     }
-
+    for (var i = 0; i < length; i++) {
+      newgeneratedpassword = newgeneratedpassword + validatedCharacterArray[Math.floor(Math.random * validatedCharacterArray.length)];
+    }
+    writePassword();
   }
-  
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = newgeneratedpassword; 
 
 }
 
