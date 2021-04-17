@@ -69,37 +69,36 @@ function getpasswordCriteria() {
   );
   console.log('confirmuppercaseCharacters:',confirmuppercaseCharacters)
   
-  generatePassword()
+  generatePassword();
 
+}
+
+function generatePassword() {
+  if (confirmLowercaseCharacter) {
+    for (var i = 0; i < lowercaseArray.length; i++) {
+      validatedCharacterArray.append(lowercaseArray[i]);
+    }
   }
-
-  function generatePassword() {
-    if (confirmLowercaseCharacter) {
-      for (var i = 0; i < lowercaseArray.length; i++) {
-        validatedCharacterArray.append(lowercaseArray[i]);
-      }
+  if (confirmUppercaseCharacters) {
+    for (var i = 0; i < uppercaseArray.length; i++) {
+      validatedCharacterArray.append(uppercaseArray[i]);
     }
-    if (confirmUppercaseCharacters) {
-      for (var i = 0; i < uppercaseArray.length; i++) {
-        validatedCharacterArray.append(uppercaseArray[i]);
-      }
-    }
-    if (confirmSpecialCharacters) {
-      for (var i = 0; i < symbolArray.length; i++) {
-        validatedCharacterArray.append(symbolArray[i]);
-      }
-    }
-    if (confirmNumericalCharacters) {
-      for (var i = 0; i < numberArray.length; i++) {
-        validatedCharacterArray.append(numberArray[i]);
-      }
-    }
-    for (var i = 0; i < length; i++) {
-      newgeneratedpassword = newgeneratedpassword + validatedCharacterArray[Math.floor(Math.random * validatedCharacterArray.length)];
-    }
-    writePassword();
   }
-
+  if (confirmSpecialCharacters) {
+    for (var i = 0; i < symbolArray.length; i++) {
+      validatedCharacterArray.append(symbolArray[i]);
+    }
+  }
+  if (confirmNumericalCharacters) {
+    for (var i = 0; i < numberArray.length; i++) {
+      validatedCharacterArray.append(numberArray[i]);
+    }
+  }
+  for (var i = 0; i < length; i++) {
+    newgeneratedpassword = newgeneratedpassword + validatedCharacterArray[Math.floor(Math.random * validatedCharacterArray.length)];
+  }
+  writePassword();
+}
 
 // Write password to the #password input
 function writePassword() {
