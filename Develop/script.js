@@ -15,19 +15,26 @@
 // 7. Display the password
 
 // console.log('character:',numericCharacters)
-// Arrays 
+// Arrays
 var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numberArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var symbolArray = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
 
 var length = "";
-var confirmspecialCharacters;
-var confirmnumericalCharacters;
-var confirmuppercaseCharacters;
-var confirmlowercaseCharacters;
-var newgeneratedpassword = "";
+var confirmSpecialCharacters;
+var confirmNumericalCharacters;
+var confirmUppercaseCharacters;
+var confirmLowercaseCharacters;
+var newGeneratedPassword = "";
 const validatedCharacterArray = [];
+
+
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", getpasswordCriteria);
 
 function getpasswordCriteria() {
   // Variable to store length of password from user input
@@ -55,48 +62,46 @@ function getpasswordCriteria() {
   confirmSpecialCharacters = confirm(
     'Click OK to confirm you would like to include special characters'  // 4. I need a way to store all these characters, the numerical, special, upper, lower. Probably a variable
   );
-  console.log('confirmspecialCharacters:',confirmspecialCharacters)
   confirmNumericalCharacters = confirm(
     'Click OK to confirm you would like to include numerical characters' // 4. I need a way to store all these characters, the numerical, special, upper, lower. Probably a variable
   );
-  console.log('confirmnumericalCharacters:',confirmnumericalCharacters)
   confirmLowercaseCharacters = confirm(
     'Click OK to confirm you would  like to include lowercase characters' // 4. I need a way to store all these characters, the numerical, special, upper, lower. Probably a variable
   );
-  console.log('confirmlowercaseCharacters:',confirmlowercaseCharacters)
   confirmUppercaseCharacters = confirm(
     'Click OK to confirm you would like to include uppercase characters' // 4. I need a way to store all these characters, the numerical, special, upper, lower. Probably a variable
   );
-  console.log('confirmuppercaseCharacters:',confirmuppercaseCharacters)
   
   generatePassword();
 
 }
 
 function generatePassword() {
-  if (confirmLowercaseCharacter) {
+  if (confirmLowercaseCharacters) {
     for (var i = 0; i < lowercaseArray.length; i++) {
-      validatedCharacterArray.append(lowercaseArray[i]);
+      validatedCharacterArray.push(lowercaseArray[i]);
     }
   }
   if (confirmUppercaseCharacters) {
     for (var i = 0; i < uppercaseArray.length; i++) {
-      validatedCharacterArray.append(uppercaseArray[i]);
+      validatedCharacterArray.push(uppercaseArray[i]);
     }
   }
   if (confirmSpecialCharacters) {
     for (var i = 0; i < symbolArray.length; i++) {
-      validatedCharacterArray.append(symbolArray[i]);
+      validatedCharacterArray.push(symbolArray[i]);
     }
   }
   if (confirmNumericalCharacters) {
     for (var i = 0; i < numberArray.length; i++) {
-      validatedCharacterArray.append(numberArray[i]);
+      validatedCharacterArray.push(numberArray[i]);
     }
   }
   for (var i = 0; i < length; i++) {
-    newgeneratedpassword = newgeneratedpassword + validatedCharacterArray[Math.floor(Math.random * validatedCharacterArray.length)];
+    newGeneratedPassword = newGeneratedPassword + validatedCharacterArray[Math.floor(Math.random() * validatedCharacterArray.length)];
+    
   }
+  console.log(validatedCharacterArray);
   writePassword();
 }
 
@@ -104,12 +109,6 @@ function generatePassword() {
 function writePassword() {
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = newgeneratedpassword; 
+  passwordText.value = newGeneratedPassword; 
 
 }
-
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", getpasswordCriteria());
