@@ -93,10 +93,11 @@ function generatePassword() {
     }
   }
   if (confirmNumericalCharacters) {
-    for (var i = 0; i < numberArray.length; i++) {
+    for (var i = 0; i < numberArray.length; i++) { //
       validatedCharacterArray.push(numberArray[i]);
     }
   }
+  //Adds random character one at a time to new generated password
   for (var i = 0; i < length; i++) {
     newGeneratedPassword = newGeneratedPassword + validatedCharacterArray[Math.floor(Math.random() * validatedCharacterArray.length)];
     
