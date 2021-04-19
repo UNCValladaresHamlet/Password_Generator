@@ -1,7 +1,6 @@
-// Pseudo code for password hw
-// Product managers
-// 1. Ask how many characters the password should be ✓
-// 2. Validate that the password length is at least 8 characters. If not, throw an alert ✓
+// Pseudo code for Password HW
+// 1. Ask how many characters the password should be 
+// 2. Validate that the password length is at least 8 characters. If not, throw an alert 
 // 3. Ask if they want special, numerical, uppercase, lowercase characters
 // 4. I need a way to store all these characters, the numerical, special, upper, lower. Probably a variable
 // 5. Start building the password
@@ -14,13 +13,14 @@
 //  W8l!a@2
 // 7. Display the password
 
-// console.log('character:',numericCharacters)
-// Arrays
+
+// Declared these arrays to hold values of lowercase, uppercase, numerical, and symbol characters
 var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numberArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var symbolArray = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
 
+// Declared this variables globally to be used in our javascript
 var length = "";
 var confirmSpecialCharacters;
 var confirmNumericalCharacters;
@@ -35,6 +35,8 @@ var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", getpasswordCriteria);
+
+// Prompts user asking them how long they want their password. The parseInt function converts its first argument to a string, parses that string, then returns an integer or NaN.
 
 function getpasswordCriteria() {
   // Variable to store length of password from user input
@@ -57,7 +59,7 @@ function getpasswordCriteria() {
     alert('Password length must less than 129 characters');
     return;
   }
-  // Variable to store boolean regarding the inclusion of special characters
+  // Variable to store boolean regarding the inclusion of special, numerical, uppercase, lowercase characters
   // 3. Ask if they want special, numerical, uppercase, lowercase characters
   confirmSpecialCharacters = confirm(
     'Click OK to confirm you would like to include special characters'  // 4. I need a way to store all these characters, the numerical, special, upper, lower. Probably a variable
@@ -72,14 +74,15 @@ function getpasswordCriteria() {
     'Click OK to confirm you would like to include uppercase characters' // 4. I need a way to store all these characters, the numerical, special, upper, lower. Probably a variable
   );
   
-  generatePassword();
+  generatePassword(); //Nested function defined later on
 
 }
 
+// 5. Start building the password
 function generatePassword() {
   if (confirmLowercaseCharacters) {
-    for (var i = 0; i < lowercaseArray.length; i++) {
-      validatedCharacterArray.push(lowercaseArray[i]);
+    for (var i = 0; i < lowercaseArray.length; i++) {  
+      validatedCharacterArray.push(lowercaseArray[i]); 
     }
   }
   if (confirmUppercaseCharacters) {
@@ -93,10 +96,11 @@ function generatePassword() {
     }
   }
   if (confirmNumericalCharacters) {
-    for (var i = 0; i < numberArray.length; i++) { //
+    for (var i = 0; i < numberArray.length; i++) { 
       validatedCharacterArray.push(numberArray[i]);
     }
   }
+  // 6. Randomly choose from each variable some characters to build string
   //Adds random character one at a time to new generated password
   for (var i = 0; i < length; i++) {
     newGeneratedPassword = newGeneratedPassword + validatedCharacterArray[Math.floor(Math.random() * validatedCharacterArray.length)];
@@ -107,6 +111,7 @@ function generatePassword() {
 }
 
 // Write password to the #password input
+// 7. Display the password
 function writePassword() {
   var passwordText = document.querySelector("#password");
 
